@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5280a40a-92b6-4fa4-8d84-77d24cfc9406}</ProjectGuid>
+    <RootNamespace>palworldadmin</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgApplocalDeps>false</VcpkgApplocalDeps>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+    <VcpkgTriplet>
+    </VcpkgTriplet>
+    <VcpkgUseMD>true</VcpkgUseMD>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+    <VcpkgTriplet>
+    </VcpkgTriplet>
+    <VcpkgUseMD>true</VcpkgUseMD>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>crypt32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)wrapper\d3d9.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /b /v /y "$(OutputPath)palworld-admin.dll" "D:\GOG Games\Palworld\_Dedicated Server\Pal\Binaries\Win64\d3d9.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>crypt32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(ProjectDir)wrapper\d3d9.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /b /v /y "$(OutputPath)palworld-admin.dll" "D:\GOG Games\Palworld\_Dedicated Server\Pal\Binaries\Win64\d3d9.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="include\ue\engine\aactor.cpp" />
+    <ClCompile Include="include\ue\offsets.cpp" />
+    <ClCompile Include="src\admin\callbacks\chat.cpp" />
+    <ClCompile Include="src\admin\server\server.cpp" />
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="include\palworld\hook.cpp" />
+    <ClCompile Include="include\palworld\hooks\broadcast_chat_message.cpp" />
+    <ClCompile Include="include\palworld\hooks\process_event.cpp" />
+    <ClCompile Include="include\palworld\hooks\static_construct_object.cpp" />
+    <ClCompile Include="include\palworld\sdk.cpp" />
+    <ClCompile Include="include\ue\core\uobject.cpp" />
+    <ClCompile Include="wrapper\d3d9_wrapper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\admin\callbacks.h" />
+    <ClInclude Include="include\config_file.h" />
+    <ClInclude Include="include\lazy_importer.h" />
+    <ClInclude Include="include\nlohmann\json.hpp" />
+    <ClInclude Include="include\nlohmann\json_fwd.hpp" />
+    <ClInclude Include="include\palworld\callback.h" />
+    <ClInclude Include="include\palworld\hooks.h" />
+    <ClInclude Include="include\palworld\palworld.h" />
+    <ClInclude Include="include\palworld\sdk.h" />
+    <ClInclude Include="include\admin\server.h" />
+    <ClInclude Include="include\palworld\sdk\character\pal_player_character.h" />
+    <ClInclude Include="include\palworld\sdk\component\pal_character_parameter_component.h" />
+    <ClInclude Include="include\palworld\sdk\enums.h" />
+    <ClInclude Include="include\palworld\sdk\enums\chat.h" />
+    <ClInclude Include="include\palworld\sdk\character\pal_character.h" />
+    <ClInclude Include="include\palworld\sdk\pal_chat_message.h" />
+    <ClInclude Include="include\palworld\sdk\pal_utility.h" />
+    <ClInclude Include="include\palworld\sdk\ue.h" />
+    <ClInclude Include="include\ue\core\array\fnamepool.h" />
+    <ClInclude Include="include\ue\core\array\tarray.h" />
+    <ClInclude Include="include\ue\core\array\tenum.h" />
+    <ClInclude Include="include\ue\core\array\tmap.h" />
+    <ClInclude Include="include\ue\core\array\tobjectarray.h" />
+    <ClInclude Include="include\ue\core\class\uclass.h" />
+    <ClInclude Include="include\ue\core\class\ufield.h" />
+    <ClInclude Include="include\ue\core\class\ufunction.h" />
+    <ClInclude Include="include\ue\core\class\uproperty.h" />
+    <ClInclude Include="include\ue\core\class\ustruct.h" />
+    <ClInclude Include="include\ue\core\fname.h" />
+    <ClInclude Include="include\ue\core\fstring.h" />
+    <ClInclude Include="include\ue\core\ftext.h" />
+    <ClInclude Include="include\ue\core\processevent.h" />
+    <ClInclude Include="include\ue\engine\staticconstructobject_internal.h" />
+    <ClInclude Include="include\ue\core\uconsole.h" />
+    <ClInclude Include="include\ue\core\uobject.h" />
+    <ClInclude Include="include\ue\core\vfunction.h" />
+    <ClInclude Include="include\ue\engine\aactor.h" />
+    <ClInclude Include="include\ue\engine\acharacter.h" />
+    <ClInclude Include="include\ue\engine\agamestatebase.h" />
+    <ClInclude Include="include\ue\engine\apawn.h" />
+    <ClInclude Include="include\ue\engine\aplayerstate.h" />
+    <ClInclude Include="include\ue\engine\controller\acontroller.h" />
+    <ClInclude Include="include\ue\engine\controller\aplayercontroller.h" />
+    <ClInclude Include="include\ue\engine\uengine.h" />
+    <ClInclude Include="include\ue\engine\ugameinstance.h" />
+    <ClInclude Include="include\ue\engine\ugameplaystatics.h" />
+    <ClInclude Include="include\ue\engine\ulevel.h" />
+    <ClInclude Include="include\ue\engine\uplayer.h" />
+    <ClInclude Include="include\ue\engine\uviewportclient.h" />
+    <ClInclude Include="include\ue\engine\uworld.h" />
+    <ClInclude Include="include\ue\enums.h" />
+    <ClInclude Include="include\ue\enums\flags.h" />
+    <ClInclude Include="include\ue\memory.h" />
+    <ClInclude Include="include\ue\offsets.h" />
+    <ClInclude Include="include\ue\primitives.h" />
+    <ClInclude Include="include\ue\primitives\fguid.h" />
+    <ClInclude Include="include\ue\primitives\flinearcolor.h" />
+    <ClInclude Include="include\ue\primitives\fmatrix.h" />
+    <ClInclude Include="include\ue\primitives\frotator.h" />
+    <ClInclude Include="include\ue\primitives\ftransform.h" />
+    <ClInclude Include="include\ue\primitives\fvector.h" />
+    <ClInclude Include="include\ue\primitives\fvector2d.h" />
+    <ClInclude Include="include\ue\primitives\fvector4.h" />
+    <ClInclude Include="include\ue\typedefs.h" />
+    <ClInclude Include="include\ue\ue.h" />
+    <ClInclude Include="include\ue\utils.h" />
+    <ClInclude Include="include\ue\utils\console.h" />
+    <ClInclude Include="include\ue\utils\log.h" />
+    <ClInclude Include="include\ue\utils\pattern_scanner.h" />
+    <ClInclude Include="wrapper\d3d9_module_manager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wrapper\d3d9.def" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

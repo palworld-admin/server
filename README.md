@@ -3,7 +3,7 @@ The core API for Palworld Server
 
 ## Features
 1. Discord Webhook integration (WIP)
-[](assets/discord-chat-webhook.png)
+![](assets/discord-chat-webhook.png)
 
 2. RPC calls to the server (WIP)
 

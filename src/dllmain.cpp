@@ -19,7 +19,7 @@ void generate_default_config(ConfigFile& config)
 {
 	ue::utils::log(_("Configuration file is invalid. Generating default configuration"));
 	config.json[_("server")][_("host")] = _("127.0.0.1");
-	config.json[_("server")][_("port")] = _("5555");
+	config.json[_("server")][_("port")] = 5555;
 	config.json[_("server")][_("key")]  = config.generate_key(8);
 	if (config.save())
 	{
@@ -71,12 +71,12 @@ void initialize(const HMODULE module)
 
 	// needed for logging 
 	const std::string host = config.json[_("server")][_("host")];
-	const std::string port = config.json[_("server")][_("port")];
+	const int32 port = config.json[_("server")][_("port")];
 	const std::string key  = config.json[_("server")][_("key")];
 
 	ue::utils::log(_("[Configuration Information]"));
 	ue::utils::log(_("Admin Server Host: %s"), host.c_str());
-	ue::utils::log(_("Admin Server Port: %s"), port.c_str());
+	ue::utils::log(_("Admin Server Port: %d"), port);
 	ue::utils::log(_("Admin Server Key: %s"), key.c_str());
 
 	if (!config.json["discord"].empty())

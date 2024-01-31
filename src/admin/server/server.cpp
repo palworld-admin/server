@@ -1,3 +1,4 @@
+#include <thread>
 #include <admin/server.h>
 #include <admin/callbacks.h>
 #include <curl/curl.h>

@@ -8,22 +8,43 @@
 class ConfigFile
 {
 public:
-	explicit ConfigFile(const std::string& filename);
+	/**
+	 * \brief Loads a config file
+	 * \param filepath File Absolute Directory
+	 */
+	explicit ConfigFile(const std::string& filepath);
+
+	/**
+	 * \brief saves the config file
+	 * \return save success
+	 */
 	bool save() const;
+
+
+	/**
+	 * \brief checks if the config file is valid
+	 * \return is file valid
+	 */
 	bool valid() const;
+
+	/**
+	 * \brief Generate Server Key
+	 * \param length generated key length
+	 * \return string
+	 */
 	static std::string generate_key(int length);
 	nlohmann::json json;
 
 private:
-	std::string m_filename;
+	std::string m_filepath;
 };
 
-inline ConfigFile::ConfigFile(const std::string& filename)
+inline ConfigFile::ConfigFile(const std::string& filepath)
 {
-	m_filename = filename;
+	m_filepath = filepath;
 	if (valid())
 	{
-		std::ifstream f(filename);
+		std::ifstream f(m_filepath);
 		if (f.is_open())
 			json = nlohmann::json::parse(f);
 	}
@@ -36,7 +57,7 @@ inline ConfigFile::ConfigFile(const std::string& filename)
 
 inline bool ConfigFile::save() const
 {
-	std::ofstream f(m_filename);
+	std::ofstream f(m_filepath);
 	f << json;
 	f.close();
 
@@ -48,7 +69,7 @@ inline bool ConfigFile::save() const
 
 inline bool ConfigFile::valid() const
 {
-	return std::filesystem::exists(m_filename);
+	return std::filesystem::exists(m_filepath);
 }
 
 inline std::string ConfigFile::generate_key(const int length)

@@ -46,11 +46,19 @@ void initialize(const HMODULE module)
 	ue::utils::print(_(" |  __/ (_| | |\\ V  V / (_) | |  | | (_| |/ ___ \\ (_| | | | | | | | | | | \n"));
 	ue::utils::print(_(" |_|   \\__,_|_| \\_/\\_/ \\___/|_|  |_|\\__,_/_/   \\_\\__,_|_| |_| |_|_|_| |_|\n"));
 	ue::utils::print("\n");
-	ue::utils::log(_("palworld-admin version: %s built on: %s"), "0.0.1", __TIMESTAMP__);
+	ue::utils::log(_("palworld-admin version: %s built on: %s"), "0.0.2", __TIMESTAMP__);
 	ue::utils::log(_("Initializing..."));
 
 	// Load config
-	ConfigFile config(_("palworld-admin.config.json"));
+	// Fixes: https://github.com/palworld-admin/server/issues/1
+	char module_filename[1024]{'\0'};
+	GetModuleFileNameA(module, module_filename, sizeof(module_filename) / sizeof(wchar_t));
+
+	const auto file_path           = std::filesystem::path(module_filename).parent_path();
+	const std::string abs_filepath = file_path.string() + _("\\palworld-admin.config.json");
+	ue::utils::log("Configuration Location: %s", abs_filepath.c_str());
+
+	ConfigFile config(_(abs_filepath));
 	if (config.valid())
 	{
 		ue::utils::log(_("Configuration file loaded!"));
@@ -71,7 +79,7 @@ void initialize(const HMODULE module)
 
 	// needed for logging 
 	const std::string host = config.json[_("server")][_("host")];
-	const int32 port = config.json[_("server")][_("port")];
+	const int32 port       = config.json[_("server")][_("port")];
 	const std::string key  = config.json[_("server")][_("key")];
 
 	ue::utils::log(_("[Configuration Information]"));

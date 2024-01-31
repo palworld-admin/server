@@ -8,6 +8,7 @@ void admin::callbacks::Chat::call(long long a1, palworld::FPalChatMessage* chat_
 {
 	// Create a CURL handle
 
+	// Uses discord webhook guide from here: https://birdie0.github.io/discord-webhooks-guide/discord_webhook.html
 	if (!config_file->json["discord"].empty())
 	{
 		if (!config_file->json["discord"]["webhook_url"].empty()
@@ -42,9 +43,13 @@ void admin::callbacks::Chat::call(long long a1, palworld::FPalChatMessage* chat_
 				data[_("avatar_url")] = config_file->json[_("discord")][_("bot_avatar")];
 			}
 
-			data[_("embeds")][0][_("author")][_("name")] = chat_message->Sender.c_str();
-			data[_("embeds")][0][_("description")]       = chat_message->Message.c_str();
-			data[_("embeds")][0][_("color")]             = 0x00FF00;
+			// Allow UTF-8 Characters
+			// Fixes: https://github.com/palworld-admin/server/issues/2
+			data[_("embeds")][0][_("author")][_("name")] = palworld::Sdk::to_utf8(
+				chat_message->Sender.get_wide_string());
+			data[_("embeds")][0][_("description")] = palworld::Sdk::to_utf8(
+				chat_message->Message.get_wide_string());
+			data[_("embeds")][0][_("color")] = 0x00FF00;
 
 			if (!config_file->json[_("discord")][_("color")].empty())
 			{

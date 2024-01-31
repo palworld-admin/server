@@ -1,3 +1,4 @@
+#include <thread>
 #include <palworld/sdk.h>
 #include <admin/server.h>
 
@@ -46,7 +47,7 @@ void initialize(const HMODULE module)
 	ue::utils::print(_(" |  __/ (_| | |\\ V  V / (_) | |  | | (_| |/ ___ \\ (_| | | | | | | | | | | \n"));
 	ue::utils::print(_(" |_|   \\__,_|_| \\_/\\_/ \\___/|_|  |_|\\__,_/_/   \\_\\__,_|_| |_| |_|_|_| |_|\n"));
 	ue::utils::print("\n");
-	ue::utils::log(_("palworld-admin version: %s built on: %s"), "0.0.2", __TIMESTAMP__);
+	ue::utils::log(_("palworld-admin version: %s built on: %s"), "0.0.3", __TIMESTAMP__);
 	ue::utils::log(_("Initializing..."));
 
 	// Load config
@@ -87,9 +88,10 @@ void initialize(const HMODULE module)
 	ue::utils::log(_("Admin Server Port: %d"), port);
 	ue::utils::log(_("Admin Server Key: %s"), key.c_str());
 
-	if (!config.json["discord"].empty())
+	if (!config.json[_("discord")].empty())
 	{
-		if (!config.json["discord"]["webhook_url"].empty())
+		ue::utils::log(_("[Discord Information]"));
+		if (!config.json[_("discord")][_("webhook_url")].empty())
 		{
 			ue::utils::log(_("Discord Webhook is Enabled"));
 			const std::string webhook_url = config.json["discord"]["webhook_url"];
@@ -109,17 +111,19 @@ void initialize(const HMODULE module)
 	server.init();
 	ue::utils::log(_("Server Initialized!"));
 
-	// register server callbacks
-	server.register_callbacks();
-
 	// Initialize hooks
 	palworld::hooks::init();
 
 	// Run server
 	server.run();
 
+	LOG("You can unhook the DLL by pressing END key");
+	while (!LI_FN(GetAsyncKeyState)(VK_END)) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    }
+
 	// remove hooks
-	palworld::hooks::init();
+	palworld::hooks::remove();
 
 	// release thread
 	release(module);
